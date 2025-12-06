@@ -51,13 +51,15 @@
         loadCSS('app.css');
     </script>
 
-    <!-- Load Alpine.js from CDN -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- Load app JS with base URL -->
+    <!-- Load app JS BEFORE Alpine.js -->
     <script>
-        loadJS('app-alpine.js');
+        const script = document.createElement('script');
+        script.src = CONFIG.asset('app-alpine.js');
+        document.head.appendChild(script);
     </script>
+
+    <!-- Load Alpine.js from CDN  -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <title></title>
 </head>
