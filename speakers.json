@@ -1,0 +1,109 @@
+[
+    {
+        "date": "2025/11/01",
+        "speaker": "Tom Hanks",
+        "location": "Holanda",
+        "congregation": "Rotterdam-Kaapverdisch",
+        "outline": 4,
+        "obs": "Que provas temos de que Deus existe?",
+        "chairman": "Morgan Freeman",
+        "reader": "Denzel Washington",
+        "attendant1": "Brad Pitt",
+        "attendant2": "Leonardo DiCaprio"
+    },
+    {
+        "date": "2025/11/08",
+        "speaker": "Robert De Niro",
+        "location": "Alemanha",
+        "congregation": "Melle-Portugiesisch",
+        "outline": 77,
+        "obs": "Sempre mostrem hospitalidade",
+        "chairman": "Denzel Washington",
+        "reader": "Samuel L. Jackson",
+        "attendant1": "Morgan Freeman",
+        "attendant2": "Al Pacino"
+    },
+    {
+        "date": "2025/11/15",
+        "speaker": "Matt Damon",
+        "location": "Holanda",
+        "congregation": "Rpresentante da Filial",
+        "type": "A",
+        "obs": "\"Ouça o Que o Espírito Diz às Congregações\"",
+        "chairman": "Samuel L. Jackson",
+        "reader": "Will Smith",
+        "attendant1": "Leonardo DiCaprio",
+        "attendant2": "Brad Pitt"
+    },
+    {
+        "date": "2025/11/22",
+        "speaker": "Johnny Depp",
+        "location": "Holanda",
+        "congregation": "Rotterdam-Kaapverdisch",
+        "outline": 9,
+        "obs": "Escute e faça o que a Bíblia diz",
+        "chairman": "Brad Pitt",
+        "reader": "George Clooney",
+        "attendant1": "Morgan Freeman",
+        "attendant2": "Al Pacino"
+    },
+    {
+        "date": "2025/11/29",
+        "speaker": "Russell Crowe",
+        "location": "Bélgica",
+        "congregation": "Antwerpen-Noord",
+        "chairman": "Leonardo DiCaprio",
+        "reader": "Morgan Freeman",
+        "attendant1": "Al Pacino",
+        "attendant2": "Samuel L. Jackson"
+    },
+    {
+        "date": "2025/12/06",
+        "speaker": "Christian Bale",
+        "location": "Holanda",
+        "congregation": "Rotterdam-Portugees ",
+        "outline": 33,
+        "obs": "Quando vai existir verdadeira justiça ",
+        "chairman": "George Clooney",
+        "reader": "Denzel Washington",
+        "attendant1": "Brad Pitt",
+        "attendant2": "Morgan Freeman"
+    },
+    {
+        "date": "2025/12/13",
+        "speaker": "Harrison Ford",
+        "location": "Holanda",
+        "congregation": "Den Haag-Portuguees",
+        "outline": 79,
+        "obs": "Você vai escolher ser amigo de Deus?",
+        "chairman": "Morgan Freeman",
+        "reader": "Will Smith",
+        "attendant1": "Leonardo DiCaprio",
+        "attendant2": "Al Pacino"
+    },
+    {
+        "date": "2025/12/20",
+        "speaker": "Hugh Jackman",
+        "location": "Holanda",
+        "congregation": "Amsterdam-Portugees",
+        "outline": 42,
+        "obs": "O amor pode vencer o ódio?",
+        "chairman": "Denzel Washington",
+        "reader": "Samuel L. Jackson",
+        "attendant1": "Morgan Freeman",
+        "attendant2": "Brad Pitt"
+    },
+    {
+        "date": "2025/12/27",
+        "speaker": "Chris Hemsworth",
+        "location": "Brasil ",
+        "congregation": "Steaming",
+        "type": "S",
+        "outline": 18,
+        "obs": "Faça de Jeová a sua fortaleza ",
+        "chairman": "Leonardo DiCaprio",
+        "reader": "Morgan Freeman",
+        "attendant1": "Al Pacino",
+        "attendant2": "Samuel L. Jackson"
+    }
+]

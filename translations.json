@@ -1,0 +1,32 @@
+{
+    "pt": {
+        "pageTitle": "Programação para as Reuniões do Fim de Semana",
+        "printButton": "Imprimir",
+        "textareaPlaceholder": "Cole o conteúdo do speakers.json aqui...",
+        "errorEmpty": "Cole o JSON no campo à esquerda",
+        "errorParsing": "Erro ao processar JSON",
+        "months": ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+        "chairman": "Presidente",
+        "reader": "Leitor",
+        "attendants": "Indicadores",
+        "regionalConvention": "Congresso Regional",
+        "circuitAssembly": "Assembleia de circuito",
+        "specialTalk": "Discurso Especial",
+        "interpreter": "Intérprete"
+    },
+    "en": {
+        "pageTitle": "Weekend Meeting Schedule",
+        "printButton": "Print",
+        "textareaPlaceholder": "Paste the speakers.json content here...",
+        "errorEmpty": "Paste JSON in the left field",
+        "errorParsing": "Error parsing JSON",
+        "months": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        "chairman": "Chairman",
+        "reader": "Reader",
+        "attendants": "Attendants",
+        "regionalConvention": "Regional Convention",
+        "circuitAssembly": "Circuit Assembly",
+        "specialTalk": "Special Talk",
+        "interpreter": "Interpreter"
+    }
+}

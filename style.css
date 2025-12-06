@@ -1,0 +1,139 @@
+@page {
+  margin: 1cm !important;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+table {
+  page-break-inside: auto
+}
+
+tr {
+  page-break-inside: avoid;
+  page-break-after: auto
+}
+
+thead {
+  display: table-header-group
+}
+
+tfoot {
+  display: table-footer-group
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+}
+
+hr {
+  border-top: 1px solid #d5dffd;
+  border-bottom: 0;
+  border-right: 0;
+  border-left: 0;
+}
+
+span {
+  text-wrap: nowrap;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+img.icon {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+table#main {
+  width: calc(100% - 3px);
+}
+
+table#main>tbody>tr>td {
+  border: 1px solid #d5dffd;
+  padding: 15px;
+  position: relative;
+}
+
+table#main>tbody>tr>td:first-child {
+  background-color: #f2f5ff;
+  text-align: center;
+  color: #3B4CA3;
+  font-weight: 600;
+}
+
+table#main>tbody>tr>td:nth-child(2) {
+  min-width: 250px;
+}
+
+thead td {
+  padding: 10px;
+  background-color: #6876BE;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 14px;
+  border: 1px solid #6876BE;
+}
+
+table.chairman {
+  margin-bottom: 10px;
+}
+
+table.chairman td:first-child {
+  width: 100px;
+  color: #757575;
+}
+
+table.chairman td:last-child {
+  text-wrap: nowrap;
+  width: 200px;
+  color: #222222;
+}
+
+table.attendants {
+  margin-top: 10px;
+}
+
+table.attendants td:first-child {
+  width: 100px;
+  color: #757575;
+}
+
+table.attendants td:last-child {
+  text-wrap: nowrap;
+  width: 200px;
+  color: #222222;
+}
+
+table.talk td.theme {
+  color: #3B4CA3;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+table.talk td.speaker {
+  color: #222222;
+  font-size: 13px;
+}
+
+table.talk td.speaker span {
+  font-size: 11px;
+}
+
+table.talk td.congregation {
+  color: #757575;
+  font-size: 11px;
+}
+
+.exception {
+  color: #3B4CA3;
+  font-weight: 600;
+  font-size: 15px;
+}

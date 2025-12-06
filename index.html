@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Base URL Configuration - Must be first -->
+    <script>
+        const CONFIG = {
+            baseUrl: '',
+
+            asset(path) {
+                const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+                return this.baseUrl ? `${this.baseUrl}/${cleanPath}` : cleanPath;
+            }
+        };
+
+        // Auto-detect GitHub Pages environment
+        if (window.location.hostname.includes('github.io')) {
+            const pathParts = window.location.pathname.split('/').filter(Boolean);
+            if (pathParts.length > 0) {
+                CONFIG.baseUrl = `/${pathParts[0]}/speakers`;
+            }
+        }
+
+        // Dynamically load CSS files
+        function loadCSS(href) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = CONFIG.asset(href);
+            document.head.appendChild(link);
+        }
+
+        // Dynamically load JS files
+        function loadJS(src, defer = false) {
+            const script = document.createElement('script');
+            script.src = CONFIG.asset(src);
+            if (defer) script.defer = true;
+            document.head.appendChild(script);
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Load CSS files with base URL -->
+    <script>
+        loadCSS('style.css');
+        loadCSS('app.css');
+    </script>
+
+    <!-- Load Alpine.js from CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Load app JS with base URL -->
+    <script>
+        loadJS('app-alpine.js');
+    </script>
+</head>
+<body x-data="speakersApp" x-init="init()">
+    <div id="topbar">
+        <div class="controls">
+            <select x-model="currentLang" @change="changeLanguage()">
+                <option value="pt">Português</option>
+                <option value="en">English</option>
+            </select>
+            <button @click="print()" x-text="t('printButton')"></button>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="editor">
+            <textarea
+                x-model="jsonInput"
+                @input="parseJSON()"
+                :placeholder="t('textareaPlaceholder')">
+            </textarea>
+        </div>
+        <div id="preview">
+            <div id="output">
+                <!-- Error Message -->
+                <div x-show="error" class="error" x-text="error"></div>
+
+                <!-- Table -->
+                <table id="main" x-show="!error && data.length > 0">
+                    <thead>
+                        <tr>
+                            <td colspan="3" x-text="t('pageTitle')"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="entry in data" :key="entry.date">
+                            <tr x-show="entry.date">
+                                <!-- Date Column -->
+                                <td x-data="{ d: formatDate(entry.date) }">
+                                    <span x-text="`${d.month}, ${d.day}`"></span><br />
+                                    <span x-text="d.year"></span>
+                                </td>
+
+                                <!-- Middle Column -->
+                                <td :colspan="hasException(entry) ? '1' : '2'"
+                                    :class="!hasException(entry) ? 'exception' : ''">
+
+                                    <!-- Regular meeting -->
+                                    <template x-if="hasException(entry)">
+                                        <div>
+                                            <table class="chairman">
+                                                <tr x-show="entry.chairman">
+                                                    <td x-text="t('chairman')"></td>
+                                                    <td x-text="entry.chairman"></td>
+                                                </tr>
+                                                <tr x-show="entry.reader">
+                                                    <td x-text="t('reader')"></td>
+                                                    <td x-text="entry.reader"></td>
+                                                </tr>
+                                            </table>
+                                            <hr />
+                                            <table class="attendants">
+                                                <tr>
+                                                    <td x-text="t('attendants')"></td>
+                                                    <td x-text="entry.attendant1 || ''"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td colspan="2" x-text="entry.attendant2 || ''"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </template>
+
+                                    <!-- Special event -->
+                                    <template x-if="!hasException(entry)">
+                                        <div>
+                                            <span x-show="getEventType(entry)" x-text="getEventType(entry)"></span>
+                                            <br x-show="getEventType(entry)" />
+                                            <span style="font-size: 20px;" x-html="(entry.obs || '').replace(/\n/g, '<br />')"></span>
+                                        </div>
+                                    </template>
+                                </td>
+
+                                <!-- Talk Column (only for regular meetings) -->
+                                <td x-show="hasException(entry)">
+                                    <table class="talk">
+                                        <tr x-show="(entry.chairman || entry.reader) && entry.obs">
+                                            <td class="theme" x-html="entry?.obs?.replace(/\n/g, '<br />')"></td>
+                                        </tr>
+                                        <tr x-show="entry.speaker">
+                                            <td class="speaker">
+                                                <span x-text="entry.speaker"></span>
+                                                <template x-if="entry.interpreter">
+                                                    <span>
+                                                        <br />
+                                                        <span x-text="`- ${t('interpreter')}: ${entry.interpreter}`"></span>
+                                                    </span>
+                                                </template>
+                                            </td>
+                                        </tr>
+                                        <tr x-show="entry.congregation">
+                                            <td class="congregation" x-text="`${entry.congregation} [${entry.location || ''}]`"></td>
+                                        </tr>
+                                    </table>
+                                    <img x-show="entry.type === 'Z'" :src="CONFIG.asset('zoom.svg')" width="50" class="icon" />
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
