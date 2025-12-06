@@ -51,16 +51,6 @@
         loadCSS('app.css');
     </script>
 
-    <!-- Load app JS BEFORE Alpine.js -->
-    <script>
-        const script = document.createElement('script');
-        script.src = CONFIG.asset('app-alpine.js');
-        document.head.appendChild(script);
-    </script>
-
-    <!-- Load Alpine.js from CDN  -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
     <title></title>
 </head>
 <body x-data="speakersApp" x-init="init()">
@@ -174,5 +164,21 @@
             </div>
         </div>
     </div>
+
+    <!-- Load scripts dynamically -->
+    <script>
+        // Load app-alpine.js first
+        const appScript = document.createElement('script');
+        appScript.src = CONFIG.asset('app-alpine.js');
+        document.body.appendChild(appScript);
+
+        // Load Alpine.js after app-alpine.js completes
+        appScript.onload = function() {
+            const alpineScript = document.createElement('script');
+            alpineScript.src = 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js';
+            alpineScript.defer = true;
+            document.body.appendChild(alpineScript);
+        };
+    </script>
 </body>
 </html>
