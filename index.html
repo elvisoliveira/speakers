@@ -19,7 +19,7 @@
         if (window.location.hostname.includes('github.io')) {
             const pathParts = window.location.pathname.split('/').filter(Boolean);
             if (pathParts.length > 0) {
-                CONFIG.baseUrl = `/${pathParts[0]}/speakers`;
+                CONFIG.baseUrl = `/${pathParts[0]}`;
             }
         }
 
