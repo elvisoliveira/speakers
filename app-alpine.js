@@ -19,6 +19,9 @@ document.addEventListener('alpine:init', () => {
             // Load translations
             await this.loadTranslations();
 
+            // Set page title after translations load
+            document.title = this.t('pageTitle');
+
             // Try to load speakers.json
             try {
                 const response = await fetch(CONFIG.asset('speakers.json'));
@@ -51,6 +54,7 @@ document.addEventListener('alpine:init', () => {
         changeLanguage() {
             localStorage.setItem('preferredLanguage', this.currentLang);
             document.documentElement.lang = this.currentLang;
+            document.title = this.t('pageTitle');
         },
 
         parseJSON() {
